@@ -88,7 +88,7 @@ import {StyleSheet, Text, View, TextInput, Button, Image, KeyboardAvoidingView, 
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnRegistrar}>
               <Text style={styles.TextRegistrar}>
-                Crea una nueva cuenta
+                Crea una nueva cuentaa
               </Text>
             </TouchableOpacity>
           </Animated.View>
