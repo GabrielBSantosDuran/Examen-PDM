@@ -6,8 +6,11 @@
     resizableMode,
     Image}
     from 'react-native';
+    import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+    import App from './../App.js';
 
-    const Main =()=>{
+    const Main =(navigate)=>{
         return(
             <View style={style.card}>
 
@@ -58,15 +61,17 @@
     const style = StyleSheet.create({
         card:{
             flexDirection:'row',
-            backgroundColor: '#ffffff',
+            backgroundColor: '#FBB4AB',
             flex:1,
-            padding:10,
-            paddingTop:10,
-            paddingBottom:10,
-            margin:10,
-            marginTop:5,
+            padding:1,
+            paddingTop:1,
+            paddingBottom:1,
+            margin:1,
+            marginTop:2,
             marginBottom:5,
-            height:200
+            height:200,
+        
+            
         },
         box:{
             flex:1,

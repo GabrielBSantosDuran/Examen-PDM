@@ -1,14 +1,28 @@
 import React,{useState, useEffect} from "react";
-import {StyleSheet, Text, View, TextInput, Button, Image, KeyboardAvoidingView, TouchableOpacity, Animated, Keyboard} from 'react-native'
+import {StyleSheet, Text, View, TextInput, Button, Image, KeyboardAvoidingView, TouchableOpacity, Animated, Keyboard} from 'react-native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Main from './screen/main'
 
-    const App =()=>{
-      const[offset] = useState(new Animated.ValueXY({x:0, y:80}));
-      const [opacity] = useState(new Animated.Value(0));
-      const[logo]=useState(new Animated.ValueXY({x:130, y:155}));
-      useEffect(()=>{
+const Stack = createNativeStackNavigator()
+function mainState(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={Main}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+  const App =(navigation)=>{
+    const[offset] = useState(new Animated.ValueXY({x:0, y:80}));
+    const [opacity] = useState(new Animated.Value(0));
+    const[logo]=useState(new Animated.ValueXY({x:130, y:155}));
+    useEffect(()=>{
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
         keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
-
+        
         Animated.parallel([
           Animated.spring(offset.y,{
             toValue:0,
@@ -81,7 +95,9 @@ import {StyleSheet, Text, View, TextInput, Button, Image, KeyboardAvoidingView, 
               autoCorrect={false}
               onChangeText={()=>{}}
             ></TextInput>
-            <TouchableOpacity style={styles.btnSubmit}>
+            <TouchableOpacity style={styles.btnSubmit}
+              onPress={()=> navigation.navigate('Main')}
+              >
               <Text style={styles.SubmitText}>
                 Ingresar
               </Text>
@@ -96,6 +112,7 @@ import {StyleSheet, Text, View, TextInput, Button, Image, KeyboardAvoidingView, 
         </KeyboardAvoidingView>
       );
     }
+  
 
 const styles =StyleSheet.create({
     background:{
